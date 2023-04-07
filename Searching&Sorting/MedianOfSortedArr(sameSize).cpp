@@ -1,4 +1,6 @@
 // https://practice.geeksforgeeks.org/problems/sum-of-middle-elements-of-two-sorted-arrays2305/1
+// Striver - https://www.youtube.com/watch?v=NTop3VTjmxk
+// Read the solution of median of different size. It is just a slight modification
 
 int findMidSum(int arr1[], int arr2[], int n)
 {
