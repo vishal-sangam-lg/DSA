@@ -1,8 +1,13 @@
 // https://practice.geeksforgeeks.org/problems/max-length-chain/1
 
 // Greedy solution
+// Approach:
+// Sort the pairs according to second number.
+// construct the chain maintain prev and count
 // TC: O(nlogn)
 // SC: O(1)
+
+// DP is sub-optimal solution
 
 static bool compare(struct val a, struct val b)
 {
