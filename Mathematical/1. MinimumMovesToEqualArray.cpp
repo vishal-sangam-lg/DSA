@@ -9,10 +9,6 @@
 // So if you delete length times minEle. You are indirectly deleting minEle from all element
 // Which results in answer
 
-#include <iostream>
-#include <vector>
-using namespace std;
-
 int minMoves(vector<int> &nums)
 {
     int sum = 0, minEle = nums[0], len = nums.size();
@@ -21,15 +17,8 @@ int minMoves(vector<int> &nums)
         sum += nums[i];
         minEle = min(minEle, nums[i]);
     }
+    // The target sum when all elements are minEle would be len * minEle
+    // sum - (len * minEle) gives number of decrements required
+    // Incrementing (n-1) numbers by 1 is same as decrementing 1 number by 1
     return sum - (len * minEle);
-}
-
-int main()
-{
-    vector<int> nums;
-    nums.push_back(1);
-    nums.push_back(2);
-    nums.push_back(3);
-    cout << minMoves(nums) << endl;
-    return 0;
 }

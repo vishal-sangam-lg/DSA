@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/the-kth-factor-of-n
-// Approach: Find all the factors. Return the factor when count == k
+// Approach: Find all factors from 0 to n, return index when k == count
 // TC: O(n)
 // SC: O(1)
 

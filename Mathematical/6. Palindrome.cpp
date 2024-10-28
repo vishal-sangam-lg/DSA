@@ -3,6 +3,9 @@
 // TC: O(n)
 // SC: O(1)
 
+// Optimisation -> It will work even if you reverse half of number
+// return (x == reversed) || (x == reversed / 10);
+
 #include <iostream>
 using namespace std;
 

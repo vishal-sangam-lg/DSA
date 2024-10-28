@@ -7,9 +7,15 @@
 using namespace std;
 
 // Approach - I (Optimal)
+// XOR truth table:
+// 0 0 -> 0
+// 1 1 -> 0
+// 0 1 -> 1
+// 1 0 -> 1
 int missingNumber(vector<int> &nums)
 {
     // a XOR a = 0
+    // Everything will cancel out except x XOR 0 = x
     // Since we have numbers and same indexes
     // In the end, we will have the missingNumber
     // when we xor all numbers and indexes

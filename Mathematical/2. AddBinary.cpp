@@ -7,49 +7,45 @@
 // TC: O(n)
 // SC: O(n) -> res
 
-#include <iostream>
-using namespace std;
-
 string addBinary(string a, string b)
 {
     string res = "";
     int i = a.length() - 1;
     int j = b.length() - 1;
     int carry = 0;
+
     while (i >= 0 || j >= 0)
     {
         int sum = carry;
         if (i >= 0)
-        {
             sum += a[i--] - '0';
-        }
         if (j >= 0)
-        {
             sum += b[j--] - '0';
-        }
+
+        // Case 1 and 2
         if (sum == 0 || sum == 1)
         {
             res += to_string(sum);
             carry = 0;
         }
+        // Case 3
         else if (sum == 2)
         {
             res += "0";
             carry = 1;
         }
+        // Case 4 (sum == 3)
         else
-        { // sum == 3
+        {
             res += "1";
             carry = 1;
         }
     }
+
     if (carry)
+    {
         res += "1";
+    }
     reverse(res.begin(), res.end());
     return res;
-}
-
-int main()
-{
-    cout << addBinary("11", "1") << endl;
 }

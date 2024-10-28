@@ -44,8 +44,9 @@ int maximumProduct(vector<int> &nums)
             max3 = nums[i];
         }
     }
-    ans = max(ans, min1 * min2 * max1);
-    ans = max(ans, max1 * max2 * max3);
+
+    ans = max(ans, min1 * min2 * max1); // 2 negative numbers 1 positive number
+    ans = max(ans, max1 * max2 * max3); // 3 positive numbers
     return ans;
 }
 
