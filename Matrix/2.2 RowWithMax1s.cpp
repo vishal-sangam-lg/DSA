@@ -32,3 +32,25 @@ int rowWithMax1s(vector<vector<int>> arr, int n, int m)
     }
     return max1sRow;
 }
+
+// Leetcode - 2643. Row With Maximum Ones
+// https://leetcode.com/problems/row-with-maximum-ones/description/
+// Here the matrix is not row-wise sorted like in GFG
+// Approach - Brute force
+
+vector<int> rowAndMaximumOnes(vector<vector<int>> &mat)
+{
+    int index = 0, count = 0, n = mat.size(), m = mat[0].size();
+    for (int i = 0; i < n; i++)
+    {
+        int one = 0;
+        for (int j = 0; j < m; j++)
+            one += (mat[i][j] == 1);
+        if (one > count)
+        {
+            count = one;
+            index = i;
+        }
+    }
+    return {index, count};
+}

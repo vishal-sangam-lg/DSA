@@ -5,10 +5,11 @@
 // TC: O(n^2)
 // SC: O(1)
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// The trick is
+// Rotate 90 clockwise -> Transform and swap columns
+// Rotate 90 anticlockwise -> Transform and swap rows
 
+// Rotate 90 degrees anticlockwise
 void rotateby90(vector<vector<int>> &m, int n)
 {
     for (int i = 0; i < n; i++)
@@ -27,6 +28,31 @@ void rotateby90(vector<vector<int>> &m, int n)
         for (int j = 0; j < n; j++)
         {
             swap(m[i][j], m[n - i - 1][j]);
+        }
+    }
+}
+
+// https://leetcode.com/problems/rotate-image/
+// Rotate 90 degrees clockwise
+void rotate(vector<vector<int>> &matrix)
+{
+    int n = matrix.size();
+
+    // Transform the matrix
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < i; ++j)
+        {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+
+    // Swap columns to get rotated matrix
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n / 2; ++j)
+        {
+            swap(matrix[i][j], matrix[i][n - j - 1]);
         }
     }
 }

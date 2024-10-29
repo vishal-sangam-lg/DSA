@@ -29,39 +29,47 @@ int kthSmallest(int mat[MAX][MAX], int n, int k)
 // Nested Binary Search
 // Approach: Find mid in such a way that it is the kth element
 // Inside nested binary search, count number of elements less than mid
-// If count < k. low = mid + 1;
-// Else high = mid - 1;
+// If count < k. low = mid + 1; => mid is not our answer, answer is larger
+// Else high = mid - 1; => mid could be our answer or some other smaller number
 // TC: O(log(range)*n*log(n)) where range = high - low
-int kthSmallest(int mat[MAX][MAX], int n, int k)
+// SC: O(1)
+
+// Leetcode 378 - https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/
+
+int kthSmallest(vector<vector<int>> &matrix, int k)
 {
-    int low = mat[0][0];
-    int high = mat[n - 1][n - 1];
+    int n = matrix.size(), m = matrix[0].size();
+    int low = matrix[0][0];
+    int high = matrix[n - 1][m - 1];
 
     while (low <= high)
     {
-        int count = 0;
         int mid = low + (high - low) / 2;
-        for (int i = 0; i < n; i++)
+        int count = 0;
+        // Binary search each row and count the number of elements < mid
+        for (int row = 0; row < n; ++row)
         {
-            int left = 0, right = n - 1;
-            while (left <= right)
+            int l = 0, h = n - 1;
+            while (l <= h)
             {
-                int m = left + (right - left) / 2;
-                if (mat[i][m] <= mid)
+                int m = l + (h - l) / 2;
+                if (matrix[row][m] <= mid)
                 {
-                    left = m + 1;
+                    l = m + 1;
                 }
                 else
                 {
-                    right = m - 1;
+                    h = m - 1;
                 }
             }
-            count += left;
+            count += l; // l points at the number <= mid in that row
         }
+        // count < k => kth smallest number > current mid
         if (count < k)
         {
             low = mid + 1;
         }
+        // count >= k => kth smallest number <= current mid
         else
         {
             high = mid - 1;

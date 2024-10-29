@@ -46,6 +46,18 @@ int median(vector<vector<int>> &matrix, int R, int C)
 }
 
 // Solution II - Nested Binary search
+
+// Algorithm:
+// 1. Initialize `mini` and `maxi` to find the smallest and largest elements in the matrix.
+// 2. Set `half = (R * C + 1) / 2`.
+// 3. While `mini < maxi`:
+//       a. Compute `mid = (mini + maxi) / 2`.
+//       b. Initialize `count = 0`.
+//       c. For each row, count elements `<= mid` using binary search and add to `count`.
+//       d. If `count < half`, update `mini = mid + 1`.
+//          Else, update `maxi = mid`.
+// 4. Return `mini` (or `maxi`) as the median.
+
 int median(vector<vector<int>> &matrix, int R, int C)
 {
     int mini = INT_MAX;
